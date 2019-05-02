@@ -34,12 +34,7 @@
 
  function footadd(){
    activeitemsleft();
-   if (activenum > 0) {
-       foothidden.setAttribute('class','footer');
-     }
-     else {
-       foothidden.setAttribute('class','hidden');
-     }
+   foothidden.className = (activenum > 0) ? 'footer' : 'hidden';
    }
 
    var oUI = document.getElementById("mylist");
@@ -58,35 +53,21 @@
      var footid = document.getElementsByTagName('strong')[0];
      footid.innerHTML = active.length;
  }
-
 function check(){
        var completedcheck = document.getElementById('mylist');
        var ev = ev || window.event;
        var target =  ev.target ||  ev.scrElement;
        if (target.nodeName.toLowerCase() == 'input'){
-         if (target.checked == true){
-           target.parentNode.parentNode.className='completed';
-         }
-         else{
-          target.parentNode.parentNode.className='active';
-         }
+         target.parentNode.parentNode.className = (target.checked == true) ? 'completed':'active';
         }
         clear();
  }
-  
  var active = document.getElementsByClassName('active');
  var completed = document.getElementsByClassName('completed');
  var clearbtn  = document.getElementsByClassName('clear-completed')[0];
-
-    function clear(){
-      if (completed.length > 0) {
-        clearbtn.setAttribute('class','clear-completed');
-      }
-      else{
-        clearbtn.setAttribute('class','hidden');
-      }
+ function clear(){
+   clearbtn.className = (completed.length > 0) ? 'clear-completed':'hidden';
     }
-
     clearbtn.onclick = function(){
       if (completed.length > 0) {
         for (var i = completed.length - 1; i >= 0;i--) {
